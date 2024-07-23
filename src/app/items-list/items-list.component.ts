@@ -1,5 +1,6 @@
 // item-list.component.ts
 import { Component, OnInit } from '@angular/core';
+
 import { ItemService } from '../item.service';
 
 // Mock data for the ItemService
@@ -12,24 +13,15 @@ const mockItems = [
 
 @Component({
   selector: 'app-item-list',
-  template: `
-    <h2>Item List</h2>
-    <ul>
-      <!-- Use Angular data binding to display items -->
-      <li *ngFor="let item of items">{{ item.id }} - {{ item.name }}</li>
-    </ul>
-  `,
+  template: 'items-list.component.html',
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit {
   items: any[] = [];
 
-  constructor(private itemService: ItemService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    // Fetch items from the ItemService
-    this.itemService.getItems().subscribe(items => {
-      this.items = items;
-    });
+ 
   }
 }
